@@ -118,7 +118,7 @@ def find_n_max_insert() -> int:
             print(f"n_max = {n}")
             return n
         elif elapsed > 2.5:
-            print(f"To slow at n = {n}")
+            print(f"Too slow at n = {n}")
             return n - 5
         n += 5
 
@@ -139,14 +139,16 @@ def graph_avg_insert_time():
             total_time += (time.time() - start_time)
         avg_time = total_time / TREES_PER_RUN
         avg_times.append(avg_time)
-        plt.clf()
-        plt.xlabel("N (# of Nodes)")
-        plt.ylabel("Average Insert Time (sec)")
-        plt.plot(Ns, avg_times)
-        plt.title("Average Time to Insert into Random BST vs N")
-        plt.grid(True)
-        plt.savefig('graph_avg_insert_time.png')
-        print("finished graph")
+
+    # Plot only after data collection so x and y lengths match
+    plt.clf()
+    plt.xlabel("N (# of Nodes)")
+    plt.ylabel("Average Insert Time (sec)")
+    plt.plot(Ns, avg_times)
+    plt.title("Average Time to Insert into Random BST vs N")
+    plt.grid(True)
+    plt.savefig('graph_avg_insert_time.png')
+    print("finished graph")
     
 
 
